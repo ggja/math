@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://unpkg.com/htmx.org@1.8.1"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="math-form" hx-post="/check" hx-trigger="submit" hx-target="#form-container" hx-swap="innerHTML">
+            <div id="form-container">
+                <div class="equation-container">
+                    <div class="column">
+                        {% for i in range(0, 10) %}
+                            <div class="equation-box">
+                                <label>{{ equations[i][0] }} = </label>
+                                <input type="number" name="{{ equations[i][0] }}" class="answer-input" required>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="column">
+                        {% for i in range(10, 20) %}
+                            <div class="equation-box">
+                                <label>{{ equations[i][0] }} = </label>
+                                <input type="number" name="{{ equations[i][0] }}" class="answer-input" required>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="check-button">Check</button>
+                </div>
+            </div>
+        </form>
+
+        <div id="results" class="results-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener('htmx:afterRequest', function(event) {
+            if (event.detail.xhr.responseText.includes('Next')) {
+                document.querySelector('#next-btn').style.display = 'block';
+                document.querySelector('button[type="submit"]').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

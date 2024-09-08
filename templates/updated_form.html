@@ -1,0 +1,34 @@
+<div class="equation-container">
+    <div class="column">
+        {% for eq, ans, user_answer, correct in results[:10] %}
+            <div class="equation-box">
+                {% if correct %}
+                    <span class="correct">{{ eq }} = {{ ans }}</span>
+                {% else %}
+                    <label>{{ eq }} = </label>
+                    <input type="number" name="{{ eq }}" class="answer-input" value="{{ user_answer }}" required>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="column">
+        {% for eq, ans, user_answer, correct in results[10:] %}
+            <div class="equation-box">
+                {% if correct %}
+                    <span class="correct">{{ eq }} = {{ ans }}</span>
+                {% else %}
+                    <label>{{ eq }} = </label>
+                    <input type="number" name="{{ eq }}" class="answer-input" value="{{ user_answer }}" required>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="button-container">
+    {% if all_correct %}
+        <button id="next-btn" class="next-button" type="button" onclick="location.reload()">Next</button>
+    {% else %}
+        <button type="submit" class="check-button">Check Again</button>
+    {% endif %}
+</div>

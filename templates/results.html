@@ -1,0 +1,13 @@
+<div class="result-feedback">
+    {% for eq, ans, correct in results %}
+        <div class="equation-result {{ 'correct' if correct else 'incorrect' }}">
+            {{ eq }} = {{ ans }}
+        </div>
+    {% endfor %}
+</div>
+
+{% if all_correct %}
+    <p>🎉 All answers are correct! 🎉</p>
+{% else %}
+    <p>Some answers are incorrect. Try again!</p>
+{% endif %}

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Quiz</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -16,7 +17,7 @@
                         {% for i in range(0, 10) %}
                             <div class="equation-box">
                                 <label>{{ equations[i][0] }} = </label>
-                                <input type="number" name="{{ equations[i][0] }}" class="answer-input" required>
+                                <input type="number" name="{{ equations[i][0] }}" class="answer-input">
                             </div>
                         {% endfor %}
                     </div>
@@ -24,27 +25,18 @@
                         {% for i in range(10, 20) %}
                             <div class="equation-box">
                                 <label>{{ equations[i][0] }} = </label>
-                                <input type="number" name="{{ equations[i][0] }}" class="answer-input" required>
+                                <input type="number" name="{{ equations[i][0] }}" class="answer-input">
                             </div>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="button-container">
-                    <button type="submit" class="check-button">Check</button>
+                    <button type="submit" class="check-button">Проверить</button>
                 </div>
             </div>
         </form>
 
         <div id="results" class="results-container"></div>
     </div>
-
-    <script>
-        document.addEventListener('htmx:afterRequest', function(event) {
-            if (event.detail.xhr.responseText.includes('Next')) {
-                document.querySelector('#next-btn').style.display = 'block';
-                document.querySelector('button[type="submit"]').style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>

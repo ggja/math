@@ -19,11 +19,6 @@ body {
 }
 
 
-
-#next-btn {
-    display: none;
-}
-
 .results-container {
     margin-top: 10px;
     font-size: 20px;
@@ -31,6 +26,7 @@ body {
 .correct {
     color: green;
     font-weight: bold;
+    padding: 4px;
 }
 
 .equation-container {
@@ -74,6 +70,7 @@ body {
 .check-button,
 .next-button {
     font-size: 20px;
+    font-family: Arial, sans-serif;
     padding: 10px 20px;
     border-radius: 15px;
     border: none;

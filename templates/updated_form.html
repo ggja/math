@@ -4,9 +4,11 @@
             <div class="equation-box">
                 {% if correct %}
                     <span class="correct">{{ eq }} = {{ ans }}</span>
+                    <label style="display: none;">{{ eq }} = </label>
+                    <input style="display: none;" type="number" name="{{ eq }}" class="answer-input" value="{{ans}}">
                 {% else %}
                     <label>{{ eq }} = </label>
-                    <input type="number" name="{{ eq }}" class="answer-input" value="" required>
+                    <input type="number" name="{{ eq }}" class="answer-input" value="{{ans}}">
                 {% endif %}
             </div>
         {% endfor %}
@@ -16,9 +18,11 @@
             <div class="equation-box">
                 {% if correct %}
                     <span class="correct">{{ eq }} = {{ ans }}</span>
+                    <label style="display: none;">{{ eq }} = </label>
+                    <input style="display: none;" type="number" name="{{ eq }}" class="answer-input" value="{{ans}}">
                 {% else %}
                     <label>{{ eq }} = </label>
-                    <input type="number" name="{{ eq }}" class="answer-input" value="" required>
+                    <input type="number" name="{{ eq }}" class="answer-input" value="{{ans}}">
                 {% endif %}
             </div>
         {% endfor %}
@@ -27,8 +31,8 @@
 
 <div class="button-container">
     {% if all_correct %}
-        <button id="next-btn" class="next-button" type="button" onclick="location.reload()">Next</button>
+        <button id="next-btn" class="next-button" type="button" onclick="location.reload()">&#x1F389; Молодец! &#x1F389;</button>
     {% else %}
-        <button type="submit" class="check-button">Check Again</button>
+        <button type="submit" class="check-button">Проверить</button>
     {% endif %}
 </div>
